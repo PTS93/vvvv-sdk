@@ -14,7 +14,7 @@ using VVVV.Core.Logging;
 namespace VVVV.Nodes
 {
     [PluginInfo(Name = "Prune", Category = "XElement", Version = "Fix", Tags = "xml")]
-    public class PruneFixNode : IPluginEvaluate, IPartImportsSatisfiedNotification
+    public class Prune : IPluginEvaluate, IPartImportsSatisfiedNotification
     {
         private class QueryInfo
         {
