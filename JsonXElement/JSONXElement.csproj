@@ -51,7 +51,7 @@
     <Reference Include="VVVV.Utils3rdParty" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JSONXElementNode.cs" />
+    <Compile Include="JsonXElementNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
