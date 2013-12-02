@@ -1,15 +1,7 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta31.dtd" >
-   <PATCH nodename="D:\Projects\_ProjectTemplate\di_2012_projecttemplate\LeecherTest3.v4p" systemname="LeecherTest3" filename="D:\Projects\_ProjectTemplate\di_2012_projecttemplate\LeecherTest3.v4p">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha31.1.dtd" >
+   <PATCH nodename="D:\Projects\development\meso-plugindevelopment\UrlCache\TestPatches\LeecherTest3.v4p" systemname="LeecherTest3" filename="D:\Projects\_ProjectTemplate\di_2012_projecttemplate\LeecherTest3.v4p">
    <BOUNDS type="Window" left="2145" top="630" width="20235" height="16395">
    </BOUNDS>
-   <NODE systemname="AsXElement (String JSON)" filename="Patches\meso-vvvvlib\plugins\JSONXElement\JSONXElement.csproj" nodename="AsXElement (String JSON)" componentmode="Hidden" id="0">
-   <BOUNDS type="Node" left="3420" top="1875" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="JSON" visible="1">
-   </PIN>
-   <PIN pinname="Element" visible="1">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="8" systemname="IOBox (String)">
    <BOUNDS type="Box" left="6105" top="375" width="795" height="255">
    </BOUNDS>
@@ -47,7 +39,7 @@
    <NODE id="7" systemname="Prune (XElement)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Prune (XElement)" componentmode="Hidden">
    <PIN pinname="XPath" visible="1">
    </PIN>
-   <PIN pinname="Element" visible="1">
+   <PIN pinname="Element" visible="1" slicecount="1" values="||">
    </PIN>
    <BOUNDS type="Node" left="5850" top="825" width="100" height="100">
    </BOUNDS>
@@ -67,12 +59,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="8" srcpinname="Output String" dstnodeid="7" dstpinname="XPath">
-   </LINK>
-   <LINK srcnodeid="0" srcpinname="Element" dstnodeid="7" dstpinname="Element">
-   <LINKPOINT x="3495" y="2820">
-   </LINKPOINT>
-   <LINKPOINT x="5835" y="90">
-   </LINKPOINT>
    </LINK>
    <NODE systemname="MakePath (String)" filename="%VVVV%\addonpack\lib\nodes\plugins\MakePath.dll" nodename="MakePath (String)" componentmode="Hidden" id="37">
    <BOUNDS type="Node" left="6450" top="7995" width="100" height="100">
@@ -133,8 +119,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="82" srcpinname="Y Output Value" dstnodeid="80" dstpinname="Switch">
-   </LINK>
-   <LINK srcnodeid="80" srcpinname="Output" dstnodeid="0" dstpinname="JSON">
    </LINK>
    <NODE systemname="Occurrence (String)" filename="%VVVV%\addonpack\lib\nodes\plugins\Occurrence.dll" nodename="Occurrence (String)" componentmode="Hidden" id="84">
    <BOUNDS type="Node" left="6480" top="1260" width="100" height="100">
@@ -930,4 +914,18 @@
    <PIN pinname="Size" slicecount="1" values="11">
    </PIN>
    </NODE>
+   <NODE systemname="AsXElement (JSON)" filename="%VVVV%\addonpack\lib\nodes\plugins\JSONStringAsElement.dll" nodename="AsXElement (JSON)" componentmode="Hidden" id="204">
+   <BOUNDS type="Node" left="3435" top="1890" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="JSON" visible="1">
+   </PIN>
+   <PIN pinname="Element" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="80" srcpinname="Output" dstnodeid="204" dstpinname="JSON">
+   </LINK>
+   <LINK srcnodeid="204" srcpinname="Element" dstnodeid="7" dstpinname="Element">
+   <LINKPOINT x="5003" y="593">
+   </LINKPOINT>
+   </LINK>
    </PATCH>
