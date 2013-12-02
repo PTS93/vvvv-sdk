@@ -1,0 +1,171 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta31.dtd" >
+   <PATCH nodename="D:\Projects\_ProjectTemplate\di_2012_projecttemplate\LeecherTest1.v4p" systemname="LeecherTest1" filename="D:\Projects\_ProjectTemplate\di_2012_projecttemplate\LeecherTest1.v4p">
+   <BOUNDS type="Window" left="4650" top="1770" width="20235" height="15810">
+   </BOUNDS>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="18" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="975" top="885" width="1665" height="270">
+   </BOUNDS>
+   <BOUNDS type="Node" left="975" top="885" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" values="http://meso.io">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="URL">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Remote Root|">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="MakePath (String)" filename="%VVVV%\addonpack\lib\nodes\plugins\MakePath.dll" nodename="MakePath (String)" componentmode="Hidden" id="37">
+   <BOUNDS type="Node" left="3540" top="2085" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1" slicecount="1" values="D:\Projects\_ProjectTemplate\di_2012_projecttemplate\Assets">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="114" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="3540" top="975" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3540" top="975" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" values="D:\Projects\_ProjectTemplate\di_2012_projecttemplate\Assets">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="LocalRoot">
+   </PIN>
+   <PIN pinname="Output String" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="114" srcpinname="Output String" dstnodeid="37" dstpinname="Input 1">
+   </LINK>
+   <NODE systemname="UrlCache (Network)" filename="Patches\meso-vvvvlib\plugins\URLCache\UrlCache.dll" nodename="UrlCache (Network)" componentmode="Hidden" id="157">
+   <BOUNDS type="Node" left="6795" top="2850" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Force Download" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Download Priority" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Is Cached" visible="1">
+   </PIN>
+   <PIN pinname="Remote Root" visible="1">
+   </PIN>
+   <PIN pinname="Local Root" visible="1">
+   </PIN>
+   <PIN pinname="Status Index" visible="1">
+   </PIN>
+   <PIN pinname="Status List" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="18" srcpinname="Output String" dstnodeid="157" dstpinname="Remote Root" linkstyle="VHV">
+   <LINKPOINT x="1035" y="1988">
+   </LINKPOINT>
+   <LINKPOINT x="6795" y="1988">
+   </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="158" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="6975" top="1200" width="8235" height="375">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6975" top="1200" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" values="/dmgmoriseiki/automation/export.json?auth_token=qXK4sSWsiDKByxTSpcSy&amp;api_version=2">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="158" srcpinname="Output String" dstnodeid="157" dstpinname="Remote File">
+   </LINK>
+   <LINK srcnodeid="37" srcpinname="Output" dstnodeid="157" dstpinname="Local Root" linkstyle="VHV">
+   <LINKPOINT x="3600" y="2588">
+   </LINKPOINT>
+   <LINKPOINT x="7125" y="2588">
+   </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="159" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="7290" top="1860" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7290" top="1860" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" values="json.json">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="159" srcpinname="Output String" dstnodeid="157" dstpinname="Local File">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="160" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="6795" top="4185" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6795" top="4185" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="157" srcpinname="Is Cached" dstnodeid="160" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="GetSlice (String)" nodename="GetSlice (String)" componentmode="Hidden" id="161">
+   <BOUNDS type="Node" left="7920" top="3450" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Index" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="157" srcpinname="Status Index" dstnodeid="161" dstpinname="Index">
+   </LINK>
+   <LINK srcnodeid="157" srcpinname="Status List" dstnodeid="161" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="162" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="7935" top="4185" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7935" top="4185" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="161" srcpinname="Output" dstnodeid="162" dstpinname="Input String">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="163" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="9015" top="2715" width="2040" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="9015" top="2715" width="5130" height="765">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt;-- warum geht der nicht?|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="14">
+   </PIN>
+   </NODE>
+   </PATCH>
