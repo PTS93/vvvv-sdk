@@ -42,11 +42,17 @@ namespace VVVV.Nodes
         [Input("Cam Serial", IsSingle = true)]
         IDiffSpread<string> FInCamSerial;
 
+        [Input("TestInput", IsSingle = true)]
+        IDiffSpread<string> FInTestInput;
+
         [Input("Set Params", IsSingle=true, IsBang=true, DefaultBoolean=false)]
         IDiffSpread<bool> FInSetParams;
 
         [Input("Settings")]
         IDiffSpread<XimeaSettings> FInSettings;
+
+        [Input("Use every Second Frame")]
+        IDiffSpread<bool> FInEnableSecondFrame;
 
         [Input("Enable Image Processing", IsSingle = true, IsToggle = true)]
         IDiffSpread<bool> FInEnableProcessImage;
@@ -75,6 +81,9 @@ namespace VVVV.Nodes
         private int FCurrentWidth;
         private int FCurrentHeight;
 
+        private bool FProcessTexture = true;
+        private bool FSecondFrameActive = false;
+
 		[Import()]
 		ILogger FLogger;
 
@@ -94,6 +103,15 @@ namespace VVVV.Nodes
 		//called when data for any output pin is requested
 		public void Evaluate(int spreadMax)
 		{
+            if (FInEnableSecondFrame.IsChanged)
+            {
+                FSecondFrameActive = FInEnableSecondFrame[0];
+            }
+            if (FSecondFrameActive)
+                FProcessTexture = !FProcessTexture;
+            else
+                FProcessTexture = true;
+            
             FOutSettingsChanged[0] = false;
             if (FInCamSerial.IsChanged || FCamSerial == null)
             {
@@ -180,6 +198,7 @@ namespace VVVV.Nodes
                 }
             }
             FOutCamFoundSerialValid[0] = FCamSerialValid;
+
 		}
 
         TextureResource<Info> CreateTextureResource(int slice)
@@ -203,17 +222,20 @@ namespace VVVV.Nodes
         //calculate the pixels in evaluate and just copy the data to the device texture here
         unsafe void UpdateTexture(Info info, Texture texture)
         {
-            Bitmap Bitmap;
-            int timeout = 1000;
-            try
+            if (FProcessTexture)
             {
-                cam.GetImage(out Bitmap, timeout);
+                Bitmap Bitmap;
+                int timeout = 1000;
+                try
+                {
+                    cam.GetImage(out Bitmap, timeout);
+                }
+                catch (Exception e)
+                {
+                    Bitmap = new Bitmap(FCurrentWidth, FCurrentHeight);
+                }
+                TextureUtils.CopyBitmapToTexture(Bitmap, texture); 
             }
-            catch (Exception e) 
-            {
-                Bitmap = new Bitmap(FCurrentWidth, FCurrentHeight);
-            }
-            TextureUtils.CopyBitmapToTexture(Bitmap, texture);
         }
 
 
