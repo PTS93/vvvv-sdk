@@ -57,7 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UGB-04-LX-F01.cs" />
+    <Compile Include="Decode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SCIP_library.cs" />
   </ItemGroup>
