@@ -19,3 +19,9 @@ addons_*.zip
 /packages/*
 !/packages/repositories.config
 packs/
+
+/vvvv45/addonpack/src/*.sdf
+/vvvv45/addonpack/src/*.sdf
+
+/vvvv45/addonpack/src/ipch/mgc3130-326d93cd/*.ipch
+/vvvv45/addonpack/src/Debug/VVVV.Assimp.Lib.ilk
